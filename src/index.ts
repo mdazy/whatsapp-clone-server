@@ -3,7 +3,7 @@ import express from "express";
 import chats from "./chats";
 
 const app = express();
-const port = 3000;
+const port = 4000;
 
 app.get("/chats", (req, res) => res.send(chats));
 
