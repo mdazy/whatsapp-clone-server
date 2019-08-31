@@ -3,7 +3,7 @@ import express from "express";
 import cors from "cors";
 
 import schema from "./schema";
-import chats from "./db";
+import db from "./db";
 
 const app = express();
 const port = 4000;
@@ -11,7 +11,7 @@ const port = 4000;
 app.use(cors());
 app.use(express.json());
 
-app.get("/chats", (req, res) => res.send(chats));
+app.get("/chats", (req, res) => res.send(db));
 
 const server = new ApolloServer({ schema });
 server.applyMiddleware({ app, path: "/graphql" });
