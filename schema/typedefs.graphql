@@ -1,0 +1,24 @@
+scalar Date
+scalar URL
+
+type Message {
+  id: ID!
+  content: String!
+  date: Date!
+}
+
+type User {
+    id: ID!
+    name: String!
+    image: URL;
+}
+
+type Chat {
+  id: ID!
+  user: User!
+  lastMessage: Message!
+}
+
+type Query {
+  chats: [Chat!]!
+}
