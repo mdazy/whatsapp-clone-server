@@ -8,9 +8,9 @@ type Message {
 }
 
 type User {
-    id: ID!
-    name: String!
-    image: URL!;
+  id: ID!
+  name: String!
+  image: URL!
 }
 
 type Chat {
