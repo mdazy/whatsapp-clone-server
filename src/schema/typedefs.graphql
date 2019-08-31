@@ -10,7 +10,7 @@ type Message {
 type User {
     id: ID!
     name: String!
-    image: URL;
+    image: URL!;
 }
 
 type Chat {
