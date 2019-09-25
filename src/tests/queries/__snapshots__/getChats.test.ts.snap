@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Query.chats should fetch all chats 1`] = `
+Object {
+  "chats": Array [
+    Object {
+      "id": "1",
+      "lastMessage": Object {
+        "content": "Hi there",
+        "date": "2019-09-25T07:11:28.693Z",
+      },
+      "user": Object {
+        "image": "https://randomuser.me/api/portraits/thumb/women/58.jpg",
+        "name": "Alice",
+      },
+    },
+    Object {
+      "id": "2",
+      "lastMessage": Object {
+        "content": "Be right back",
+        "date": "2019-09-24T22:11:28.693Z",
+      },
+      "user": Object {
+        "image": "https://randomuser.me/api/portraits/thumb/men/58.jpg",
+        "name": "Bob",
+      },
+    },
+    Object {
+      "id": "3",
+      "lastMessage": Object {
+        "content": "Let's get this done",
+        "date": "2019-09-25T05:11:28.693Z",
+      },
+      "user": Object {
+        "image": "https://randomuser.me/api/portraits/thumb/men/42.jpg",
+        "name": "Carl",
+      },
+    },
+  ],
+}
+`;
