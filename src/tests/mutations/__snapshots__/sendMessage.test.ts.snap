@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Mutation.sendMessage should add a new message 1`] = `
+Object {
+  "sendMessage": Object {
+    "content": "pika",
+    "id": "4",
+  },
+}
+`;
+
+exports[`Mutation.sendMessage should throw for non-existing chat 1`] = `
+Array [
+  [GraphQLError: No chat with id 5],
+]
+`;
+
+exports[`Mutation.sendMessage should throw for non-existing user 1`] = `
+Array [
+  [GraphQLError: No user with id 5],
+]
+`;
