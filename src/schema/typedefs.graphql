@@ -19,6 +19,12 @@ type Chat {
   lastMessage: Message!
 }
 
+type ChatRoom {
+  id: ID!
+  messages: [Message!]!
+}
+
 type Query {
   chats: [Chat!]!
+  chat(id: ID): ChatRoom
 }

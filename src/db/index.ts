@@ -1,8 +1,8 @@
 import users from "./users";
 import messages from "./messages";
-import chats from "./chats";
+import chats, { chatRooms } from "./chats";
 
-export { users, messages, chats };
+export { users, messages, chats, chatRooms };
 
 export default chats.map(c => {
   const user = users.filter(u => u.id === c.userId)[0];
