@@ -6,7 +6,8 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "dev": "ts-node-dev src/index.ts",
-    "test": "jest"
+    "test": "jest",
+    "test:updateSnapshot": "jest --updateSnapshot"
   },
   "keywords": [],
   "author": "",
