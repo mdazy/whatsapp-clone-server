@@ -29,3 +29,7 @@ type Query {
   chats: [Chat!]!
   chat(id: ID): ChatRoom
 }
+
+type Mutation {
+  sendMessage(chatId: ID, userId: ID, content: String): Message
+}
