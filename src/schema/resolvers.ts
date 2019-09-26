@@ -20,6 +20,12 @@ const resolvers = {
       );
     }
   },
+  Message: {
+    fromUser(message: any) {
+      console.log(message);
+      return users.filter(u => u.id === message.fromUserId)[0];
+    }
+  },
   Query: {
     chats() {
       return chats;

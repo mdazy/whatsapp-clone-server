@@ -3,6 +3,7 @@ scalar URL
 
 type Message {
   id: ID!
+  fromUser: User!
   content: String!
   date: Date!
 }
