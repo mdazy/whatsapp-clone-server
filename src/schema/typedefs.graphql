@@ -18,16 +18,12 @@ type Chat {
   id: ID!
   user: User!
   lastMessage: Message!
-}
-
-type ChatRoom {
-  id: ID!
-  messages: [Message!]!
+  messages: [Message]!
 }
 
 type Query {
   chats: [Chat!]!
-  chat(id: ID): ChatRoom
+  chat(id: ID): Chat
 }
 
 type Mutation {

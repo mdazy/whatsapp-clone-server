@@ -1,5 +1,5 @@
 import { DateTimeResolver, URLResolver } from "graphql-scalars";
-import { chats, users, messages, chatRooms } from "../db";
+import { chats, users, messages } from "../db";
 
 const resolvers = {
   Date: DateTimeResolver,
@@ -9,20 +9,15 @@ const resolvers = {
       return users.filter(u => u.id === chat.userId)[0];
     },
     lastMessage(chat: any) {
-      return messages.filter(m => m.id === chat.lastMessageId)[0];
-    }
-  },
-  ChatRoom: {
+      const lastMessageId = chat.messageIds[chat.messageIds.length - 1];
+      return messages.filter(m => m.id === lastMessageId)[0];
+    },
     messages(chat: any) {
-      const chatRoom = chatRooms.filter(c => c.id === chat.id)[0];
-      return chatRoom.messageIds.map(
-        id => messages.filter(mm => mm.id === id)[0]
-      );
+      return messages.filter(m => chat.messageIds.includes(m.id));
     }
   },
   Message: {
     fromUser(message: any) {
-      console.log(message);
       return users.filter(u => u.id === message.fromUserId)[0];
     }
   },
@@ -32,18 +27,18 @@ const resolvers = {
     },
     chat(_: any, params: any) {
       const id = Number(params.id);
-      const chatRoom = chatRooms.filter(c => c.id === id);
+      const chatRoom = chats.filter(c => c.id === id);
       if (chatRoom.length === 0) {
         throw new Error(`No chat with id ${id}`);
       }
-      return { id };
+      return chatRoom[0];
     }
   },
   Mutation: {
     sendMessage(_: any, params: any) {
       const chatId = Number(params.chatId);
       const userId = Number(params.userId);
-      const chatRoom = chatRooms.filter(c => c.id == chatId);
+      const chatRoom = chats.filter(c => c.id == chatId);
       if (chatRoom.length === 0) {
         throw new Error(`No chat with id ${chatId}`);
       }
@@ -51,9 +46,9 @@ const resolvers = {
       if (user.length === 0) {
         throw new Error(`No user with id ${userId}`);
       }
-      const messageId = messages.length + 1;
+      const id = messages.length + 1;
       const message = {
-        id: messages.length + 1,
+        id,
         fromUserId: userId,
         content: params.content,
         date: new Date(Date.now())
