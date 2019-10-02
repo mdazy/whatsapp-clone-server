@@ -37,9 +37,10 @@ describe("Query.chat", () => {
 
     const { query } = createTestClient(server);
     const res = await query({
+      variables: { id: 1 },
       query: `
-          {
-            chat(id:1) {
+          query getChat( $id : ID! ) {
+            chat(id:$id) {
               id
               messages {
                 id
