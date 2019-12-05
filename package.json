@@ -6,6 +6,7 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "dev": "ts-node-dev src/index.ts",
+    "codegen": "gql-gen",
     "test": "jest --watch",
     "test:updateSnapshot": "jest --updateSnapshot"
   },
