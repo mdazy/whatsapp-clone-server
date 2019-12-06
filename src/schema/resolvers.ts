@@ -10,6 +10,10 @@ const resolvers: Resolvers = {
     user(chat) {
       return users.filter(u => u.id === chat.userId)[0];
     },
+    lastMessage(chat) {
+      const lastMessageId = chat.messageIds[chat.messageIds.length - 1];
+      return messages.filter(m => m.id === lastMessageId)[0];
+    },
     messages(chat) {
       return messages.filter(m => chat.messageIds.includes(m.id));
     }
@@ -17,14 +21,6 @@ const resolvers: Resolvers = {
   Message: {
     fromUser(message) {
       return users.filter(u => u.id === message.fromUserId)[0];
-    }
-  },
-  User: {
-    name(user) {
-      return users.filter(u => u.id === user.id)[0].name;
-    },
-    image(user) {
-      return users.filter(u => u.id === user.id)[0].image;
     }
   },
   Query: {
