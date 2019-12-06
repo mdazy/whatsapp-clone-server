@@ -27,5 +27,5 @@ type Query {
 }
 
 type Mutation {
-  sendMessage(chatId: ID, userId: ID, content: String): Message
+  sendMessage(chatId: ID!, userId: ID!, content: String!): Message
 }
