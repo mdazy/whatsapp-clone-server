@@ -6,6 +6,10 @@ generates:
       - typescript
       - typescript-resolvers
     config:
+      mappers:
+        Message: ../db#IMessage
+        Chat: ../db#IChat
+        User: ../db#IUser
       scalars:
         Date: Date
         URL: String

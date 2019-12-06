@@ -8,10 +8,10 @@ const resolvers: Resolvers = {
   URL: URLResolver,
   Chat: {
     user(chat) {
-      return users.filter(u => u.id === chat.userId)[0];
+      return users.filter(u => u.id === chat.user.id)[0];
     },
     lastMessage(chat) {
-      const lastMessageId = chat.messageIds[chat.messageIds.length - 1];
+      const lastMessageId = chat.messages[chat.messages.length - 1].id;
       return messages.filter(m => m.id === lastMessageId)[0];
     },
     messages(chat) {
@@ -27,8 +27,7 @@ const resolvers: Resolvers = {
     chats() {
       return chats;
     },
-    chat(_, params) {
-      const id = Number(params.id);
+    chat(_, { id }) {
       const chatRoom = chats.filter(c => c.id === id);
       if (chatRoom.length === 0) {
         throw new Error(`No chat with id ${id}`);
@@ -37,9 +36,7 @@ const resolvers: Resolvers = {
     }
   },
   Mutation: {
-    sendMessage(_, params) {
-      const chatId = Number(params.chatId);
-      const userId = Number(params.userId);
+    sendMessage(_, { chatId, userId, content }) {
       const chatRoom = chats.filter(c => c.id == chatId);
       if (chatRoom.length === 0) {
         throw new Error(`No chat with id ${chatId}`);
@@ -48,11 +45,11 @@ const resolvers: Resolvers = {
       if (user.length === 0) {
         throw new Error(`No user with id ${userId}`);
       }
-      const id = messages.length + 1;
+      const id = (messages.length + 1).toString();
       const message = {
         id,
         fromUserId: userId,
-        content: params.content,
+        content,
         date: new Date(Date.now())
       };
       messages.push(message);
