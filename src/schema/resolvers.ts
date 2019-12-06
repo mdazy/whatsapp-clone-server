@@ -1,23 +1,25 @@
 import { DateTimeResolver, URLResolver } from "graphql-scalars";
 import { chats, users, messages } from "../db";
 
-const resolvers = {
+import { Resolvers } from "../../types/graphql";
+
+const resolvers: Resolvers = {
   Date: DateTimeResolver,
   URL: URLResolver,
   Chat: {
-    user(chat: any) {
+    user(chat) {
       return users.filter(u => u.id === chat.userId)[0];
     },
-    lastMessage(chat: any) {
+    lastMessage(chat) {
       const lastMessageId = chat.messageIds[chat.messageIds.length - 1];
       return messages.filter(m => m.id === lastMessageId)[0];
     },
-    messages(chat: any) {
+    messages(chat) {
       return messages.filter(m => chat.messageIds.includes(m.id));
     }
   },
   Message: {
-    fromUser(message: any) {
+    fromUser(message) {
       return users.filter(u => u.id === message.fromUserId)[0];
     }
   },
@@ -25,7 +27,7 @@ const resolvers = {
     chats() {
       return chats;
     },
-    chat(_: any, params: any) {
+    chat(_, params) {
       const id = Number(params.id);
       const chatRoom = chats.filter(c => c.id === id);
       if (chatRoom.length === 0) {
@@ -35,7 +37,7 @@ const resolvers = {
     }
   },
   Mutation: {
-    sendMessage(_: any, params: any) {
+    sendMessage(_, params) {
       const chatId = Number(params.chatId);
       const userId = Number(params.userId);
       const chatRoom = chats.filter(c => c.id == chatId);
