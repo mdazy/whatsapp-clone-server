@@ -1,10 +1,10 @@
-interface IChat {
+export interface IChat {
   id: string;
   userId: string;
   messageIds: string[];
 }
 
-const chats: IChat[] = [
+export const chats: IChat[] = [
   {
     id: "1",
     userId: "1",
@@ -21,5 +21,3 @@ const chats: IChat[] = [
     messageIds: ["3"]
   }
 ];
-
-export default chats;

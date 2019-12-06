@@ -1,10 +1,10 @@
-interface IUser {
+export interface IUser {
   id: string;
   name: string;
   image: string;
 }
 
-const users: IUser[] = [
+export const users: IUser[] = [
   {
     id: "1",
     name: "Alice",
@@ -21,5 +21,3 @@ const users: IUser[] = [
     image: "https://randomuser.me/api/portraits/thumb/men/42.jpg"
   }
 ];
-
-export default users;

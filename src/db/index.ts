@@ -1,7 +1,3 @@
-import users from "./users";
-import messages from "./messages";
-import chats from "./chats";
-
-export { users, messages, chats };
-
-export default chats;
+export { users, IUser } from "./users";
+export { messages, IMessage } from "./messages";
+export { chats, IChat } from "./chats";

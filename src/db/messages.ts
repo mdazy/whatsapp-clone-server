@@ -1,11 +1,11 @@
-interface IMessage {
+export interface IMessage {
   id: string;
   fromUserId: string;
   content: string;
   date: Date;
 }
 
-const messages: IMessage[] = [
+export const messages: IMessage[] = [
   {
     id: "1",
     fromUserId: "1",
@@ -25,5 +25,3 @@ const messages: IMessage[] = [
     date: new Date(2019, 8, 11, 15, 30)
   }
 ];
-
-export default messages;
