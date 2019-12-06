@@ -7,20 +7,20 @@ const resolvers: Resolvers = {
   Date: DateTimeResolver,
   URL: URLResolver,
   Chat: {
-    user(chat) {
-      return users.filter(u => u.id === chat.userId)[0];
+    user({ userId }) {
+      return users.filter(u => u.id === userId)[0];
     },
-    lastMessage(chat) {
-      const lastMessageId = chat.messageIds[chat.messageIds.length - 1];
+    lastMessage({ messageIds }) {
+      const lastMessageId = messageIds[messageIds.length - 1];
       return messages.filter(m => m.id === lastMessageId)[0];
     },
-    messages(chat) {
-      return messages.filter(m => chat.messageIds.includes(m.id));
+    messages({ messageIds }) {
+      return messages.filter(m => messageIds.includes(m.id));
     }
   },
   Message: {
-    fromUser(message) {
-      return users.filter(u => u.id === message.fromUserId)[0];
+    fromUser({ fromUserId }) {
+      return users.filter(u => u.id === fromUserId)[0];
     }
   },
   Query: {
