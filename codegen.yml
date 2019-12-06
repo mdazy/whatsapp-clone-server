@@ -7,9 +7,9 @@ generates:
       - typescript-resolvers
     config:
       mappers:
-        Message: ../db#IMessage
-        Chat: ../db#IChat
-        User: ../db#IUser
+        Message: ../src/db#IMessage
+        Chat: ../src/db#IChat
+        User: ../src/db#IUser
       scalars:
         Date: Date
         URL: String
