@@ -18,7 +18,7 @@ type Chat {
   id: ID!
   user: User!
   lastMessage: Message!
-  messages: [Message]!
+  messages: [Message!]!
 }
 
 type Query {

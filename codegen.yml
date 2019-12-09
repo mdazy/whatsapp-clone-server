@@ -6,6 +6,7 @@ generates:
       - typescript
       - typescript-resolvers
     config:
+      useIndexSignature: true
       mappers:
         Message: ../src/db#IMessage
         Chat: ../src/db#IChat
